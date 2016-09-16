@@ -1,4 +1,4 @@
--module(websocket).
+-module(websocket_vans163).
 -compile(export_all).
 
 %TODO: is 7 and 8 backwards compat with 13?
@@ -54,6 +54,8 @@ handshake(WSKey, WSExtensions, WSOptions) ->
     ExtraHeaders = case Compress of
         undefined -> #{};
         CompressOpts ->
+
+%TODO: Properly negotiate the rest of the compression options passed from client
             case maps:get(<<"permessage-deflate">>, Extensions, undefined) of
                 undefined -> #{};
                 <<>> ->
